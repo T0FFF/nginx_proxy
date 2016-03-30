@@ -1,0 +1,25 @@
+nginx:
+    build: proxy/
+    links:
+        - http1:http1
+        - http2:http2
+    ports:
+        - "80:80"
+
+
+http1:
+#    image: myhost/nodejs
+    build: node/
+    restart: always
+    ports:
+      - "5001:5000"
+
+http2:
+#    image: myhost/nodejs
+    build: node/
+    restart: always
+    ports:
+      - "5002:5000"
+
+
+
